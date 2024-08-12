@@ -115,10 +115,10 @@
 
     <script>
         function processLinks() {
-            const content = document.querySelector('.content');
-            content.innerHTML = content.innerHTML.replace(/\[link:(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>');
-        }
-
+    const content = document.querySelector('.content');
+    content.innerHTML = content.innerHTML.replace(/\[link:(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank">$1</a>');
+}
+        
         function processLineBreaks() {
             const content = document.querySelector('.content');
             content.innerHTML = content.innerHTML.replace(/\\n/g, '<br>');
