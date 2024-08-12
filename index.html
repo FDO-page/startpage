@@ -3,131 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FDO-startpage</title>
+    <title>自由与多元化促进会</title>
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+            --bg-color: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
             --text-color: #333;
-            --bg-color: rgba(255, 255, 255, 0.2);
+            --panel-bg: rgba(255, 255, 255, 0.1);
         }
-
         @media (prefers-color-scheme: dark) {
             :root {
+                --bg-color: linear-gradient(135deg, #185a9d 0%, #43cea2 100%);
                 --text-color: #f0f0f0;
-                --bg-color: rgba(0, 0, 0, 0.2);
+                --panel-bg: rgba(0, 0, 0, 0.1);
             }
         }
-
-        body, html {
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--bg-color);
             margin: 0;
             padding: 0;
-            height: 100%;
-            font-family: Arial, sans-serif;
-            color: var(--text-color);
-        }
-
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-gradient);
-            z-index: -1;
-        }
-
-        .container {
+            min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            min-height: 100%;
-            padding: 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
+            align-items: center;
         }
-
-        .content-wrapper {
-            width: 100%;
-            max-width: 800px;
-            max-height: calc(100vh - 40px);
-            overflow-y: auto;
-            background: var(--bg-color);
+		 .stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+.star {
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 50%;
+    animation: twinkle 4s infinite;
+}
+@keyframes twinkle {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 0.3; }
+}
+        .container {
+            max-width: 65%;
+            margin-left: 38.2%;
+            padding: 2rem;
+            background: var(--panel-bg);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 15px;
+            border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
-        .content {
-            padding: 30px;
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
         }
-
-        @media (min-width: 1024px) {
-            .container {
-                justify-content: flex-start;
-                padding-left: calc((100% - 65%) * 0.382);
-            }
-            .content-wrapper {
-                width: 65%;
-            }
+        p {
+            margin-bottom: 1rem;
         }
-
         a {
             color: inherit;
             text-decoration: none;
-            border-bottom: 1px dashed currentColor;
+            border-bottom: 1px dotted var(--text-color);
         }
-
-        a:hover {
-            border-bottom-style: solid;
+        .copy-btn {
+            display: inline-block;
+            cursor: pointer;
+            margin-left: 5px;
+            color: #007bff;
         }
-
-        /* 添加滚动条样式 */
-        .content-wrapper::-webkit-scrollbar {
-            width: 8px;
+        .copy-btn:hover {
+            color: #0056b3;
         }
-
-        .content-wrapper::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
+        .ocean {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(0deg, rgba(0,119,190,0.8) 0%, rgba(0,119,190,0) 100%);
+            z-index: -1;
         }
-
-        .content-wrapper::-webkit-scrollbar-thumb {
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 4px;
+        .wave {
+            background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x;
+            position: absolute;
+            width: 6400px;
+            height: 150px;
+            animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+            transform: translate3d(0, 0, 0);
         }
-
-        .content-wrapper::-webkit-scrollbar-thumb:hover {
-            background-color: rgba(255, 255, 255, 0.5);
+        .wave:nth-of-type(2) {
+            top: 25px;
+            animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 7s ease -1.25s infinite;
+            opacity: 0.5;
+        }
+        .wave:nth-of-type(3) {
+            top: 50px;
+            animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -.25s infinite, swell 7s ease -2.5s infinite;
+            opacity: 0.3;
+        }
+        @keyframes wave {
+            0% {
+                margin-left: 0;
+            }
+            100% {
+                margin-left: -1600px;
+            }
+        }
+        @keyframes swell {
+            0%, 100% {
+                transform: translate3d(0, -25px, 0);
+            }
+            50% {
+                transform: translate3d(0, 5px, 0);
+            }
+        }
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px 10px rgba(255,255,224,0.2); }
+            50% { box-shadow: 0 0 40px 20px rgba(255,255,224,0.4); }
+        }
+        @media (max-width: 768px) {
+            .container {
+                max-width: 90%;
+                margin: 2rem auto;
+            }
+            .lighthouse {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="background"></div>
     <div class="container">
-        <div class="content-wrapper">
-            <div class="content">
-                <h1>Freedom and Diversity foster Organization𖤓</h1>
-                <p></p>
-                <p>我们是一个非营利性组织，旨在通过传播自由的信息和多元的思想，推动社会进步。我们将会尽量保持中立的立场，客观的状态。我们通过线上的组织，去中心化的运营。你也可以成为我们的一员。我们提供的信息开放、多元、包容。更多详见[link:《自由与多元化促进会条例》](https://fdo-page.github.io/tiaoli/)。\n\n这是我们正在构建的项目，很多功能还待更新，欢迎你提出你的宝贵建议，发送到邮箱：guangyinzhong@outlook.com </p>
-            </div>
-        </div>
+        <h1>自由与多元化促进会：守护网络自由的灯塔</h1>
+        <div id="content"></div>
     </div>
-
+    <div class="ocean">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+    <div class="lighthouse">
+        <div class="lighthouse-body"></div>
+        <div class="light"></div>
+    </div>
+	<div class="stars"></div>
     <script>
-        function processLinks() {
-    const content = document.querySelector('.content');
-    content.innerHTML = content.innerHTML.replace(/\[link:(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank">$1</a>');
-}
-        
-        function processLineBreaks() {
-            const content = document.querySelector('.content');
-            content.innerHTML = content.innerHTML.replace(/\\n/g, '<br>');
-        }
+        const content = `在这个信息爆炸的时代，互联网已成为人类思想交流的主要平台。然而，我们也目睹了网络空间逐渐被垄断、被限制的趋势。信息茧房、言论审查、隐私侵犯等问题日益严重，威胁着互联网最初的开放精神。正是在这样的背景下，自由与多元化促进会应运而生。\n\n我们的愿景是构建一个真正多元化、去中心化的网络环境。在这里，每个声音都能被听到，每种观点都受到尊重。我们相信，只有在思想的碰撞中，真理才能愈发明晰。多元化不仅是一种状态，更是一种力量——它能激发创新，促进理解，推动社会进步。\n\n自由表达与隐私保护是我们的核心价值观。我们坚信，每个人都有表达自己观点的权利，特别是那些持不同政见者和少数群体。同时，我们也深知隐私的重要性。在日益数字化的世界里，保护个人信息就是保护个人自由。因此，我们采用虚拟身份机制，让成员可以自由表达而不必担心现实世界的压力。\n\n我们的运作机制体现了民主与去中心化的平衡。通过精英民主制，我们确保决策的科学性；通过去中心化的网络结构，我们保证了组织的开放性和灵活性。每个成员都可以建立自己的去中心化[link:主页](https://example.com)，成为信息传播的节点。这种结构不仅防止了权力的过度集中，也为多样化的声音提供了平台。\n\n自由与多元化促进会的存在，不仅仅是为了守护网络自由。我们更希望能够培养公众的批判性思维，促进不同观点之间的对话。在一个充满争议和矛盾的世界里，我们需要学会如何倾听不同的声音，如何在分歧中寻找共识。这是民主社会的基石，也是人类文明进步的动力。\n\n展望未来，我们的目标是构建一个更自由、更开放的网络环境。我们希望看到更多人加入到守护网络自由的行列中来，让互联网重新焕发其最初的光芒。我们相信，只有在自由的土壤上，人类的创造力才能充分绽放；只有在多元的环境中，我们才能找到应对全球挑战的智慧。\n\n自由与多元化促进会，就像是网络世界中的一座灯塔。我们照亮前路，指引方向，但我们不是终点。真正的目标，是让每个人都成为自由的捍卫者，让整个互联网成为思想自由交流的海洋。让我们携手同行，共同创造一个更加自由、多元的网络未来。[copy-broad:加入我们，守护网络自由！]`;
 
-        document.addEventListener('DOMContentLoaded', () => {
-            processLinks();
-            processLineBreaks();
-        });
+        function processContent(text) {
+            return text.replace(/\[link:([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
+                       .replace(/\[copy-broad:([^\]]+)\]/g, '<span class="copy-btn" onclick="copyText(\'$1\')">📋</span>')
+                       .replace(/\n/g, '<br>');
+        }
+function createStars() {
+    const starsContainer = document.querySelector('.stars');
+    const starCount = 100;
+
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.width = `${Math.random() * 2 + 1}px`;
+        star.style.height = star.style.width;
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.animationDelay = `${Math.random() * 4}s`;
+        starsContainer.appendChild(star);
+    }
+}
+
+createStars();
+
+        document.getElementById('content').innerHTML = processContent(content);
+
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('文本已复制到剪贴板！');
+            }, (err) => {
+                console.error('无法复制文本: ', err);
+            });
+        }
     </script>
 </body>
 </html>
