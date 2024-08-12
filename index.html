@@ -24,7 +24,6 @@
             height: 100%;
             font-family: Arial, sans-serif;
             color: var(--text-color);
-            overflow: hidden;
         }
 
         .background {
@@ -47,15 +46,20 @@
             overflow-y: auto;
         }
 
-        .content {
+        .content-wrapper {
             width: 100%;
             max-width: 800px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
             background: var(--bg-color);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            padding: 30px;
             border-radius: 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .content {
+            padding: 30px;
         }
 
         @media (min-width: 1024px) {
@@ -63,7 +67,7 @@
                 justify-content: flex-start;
                 padding-left: calc((100% - 65%) * 0.382);
             }
-            .content {
+            .content-wrapper {
                 width: 65%;
             }
         }
@@ -77,15 +81,35 @@
         a:hover {
             border-bottom-style: solid;
         }
+
+        /* 添加滚动条样式 */
+        .content-wrapper::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .content-wrapper::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .content-wrapper::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        .content-wrapper::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
     </style>
 </head>
 <body>
     <div class="background"></div>
     <div class="container">
-        <div class="content">
-            <h1>Freedom and Diversity foster Organization</h1>
-            <p></p>
-            <p>我们是一个非营利性组织，旨在通过传播自由的信息和多元的思想，推动中国社会进步。我们将会尽量保持中立的立场，客观的状态。我们通过线上的组织，去中心化的运营。你也可以成为我们的一员。我们提供的信息开放、多元、包容。更多详见《自由与多元促进会组织条例》。\n\n这是我们正在构建的项目，很多功能还待更新，欢迎你提出你的宝贵建议，发送到邮箱：guangyinzhong@outlook.com </p>
+        <div class="content-wrapper">
+            <div class="content">
+                <h1>Freedom and Diversity foster Organization</h1>
+                <p></p>
+                <p>我们是一个非营利性组织，旨在通过传播自由的信息和多元的思想，推动社会进步。我们将会尽量保持中立的立场，客观的状态。我们通过线上的组织，去中心化的运营。你也可以成为我们的一员。我们提供的信息开放、多元、包容。更多详见[link:《自由与多元化促进会条例》](https://fdo-page.github.io/tiaoli/)。\n\n这是我们正在构建的项目，很多功能还待更新，欢迎你提出你的宝贵建议，发送到邮箱：guangyinzhong@outlook.com </p>
+            </div>
         </div>
     </div>
 
